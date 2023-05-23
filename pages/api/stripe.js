@@ -2,6 +2,8 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 const project_id = process.env.SANITY_PROJECT_ID;
+console.log(project_id)
+// const project_id = 'bg02daws';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -17,6 +19,7 @@ export default async function handler(req, res) {
         line_items: req.body.map((item) => {
           const img = item.image[0].asset._ref;
           const newImage = img.replace('image-', `https://cdn.sanity.io/images/${project_id}/production/`).replace('-jpg', '.jpg'); //will need to handle other img format in the future
+          console.log(newImage)
 
           return {
             price_data: { 
