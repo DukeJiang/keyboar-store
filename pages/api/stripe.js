@@ -15,6 +15,7 @@ export default async function handler(req, res) {
         billing_address_collection: 'auto',
         shipping_options: [
           { shipping_rate: 'shr_1NAQlRHBwLsStIYhb5yZ4H1C' },
+          { shipping_rate: 'shr_1NAQmDHBwLsStIYhYeBnXqDA' },
         ],
         line_items: req.body.map((item) => {
           const img = item.image[0].asset._ref;
